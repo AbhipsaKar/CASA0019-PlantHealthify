@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: ReferenceImageLibrary
+  m_EditorClassIdentifier: 
+  m_GuidLow: 4964015167126133532
+  m_GuidHigh: 3562296941544966800
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 5619038059798210781
+      m_GuidHigh: 13082326808498642615
+    m_SerializedTextureGuid:
+      m_GuidLow: 6153073368462098379
+      m_GuidHigh: 7968775657897480217
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Marker-01
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5354727140690411083
+      m_GuidHigh: 18101062456839382401
+    m_SerializedTextureGuid:
+      m_GuidLow: 4095096830301334711
+      m_GuidHigh: 6606623590837813259
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Marker-02
+    m_Texture: {fileID: 0}
