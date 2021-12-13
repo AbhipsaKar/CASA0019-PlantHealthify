@@ -1,0 +1,2 @@
+2dac28ddd5584dfab79e2150ebc28db5|E:\GitHub\CASA0019-PlantHealthify\Digiverse\AR_PlantHealthify\Assets\AR_Gauge\Markers\Marker-01.png
+c1febe4bcff64a4f812512a566e433fb|E:\GitHub\CASA0019-PlantHealthify\Digiverse\AR_PlantHealthify\Assets\AR_Gauge\Markers\Marker-02.png

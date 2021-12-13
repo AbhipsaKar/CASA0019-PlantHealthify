@@ -33,6 +33,14 @@ public class ARImgRecognition : MonoBehaviour
         InstatiatedGObject[3].name = GameObjectToSpawn[3].name;   //AR object 1
         InstatiatedGObject[3].SetActive(false);
 
+        InstatiatedGObject.Add(Instantiate(GameObjectToSpawn[4], Vector3.zero, Quaternion.identity));
+        InstatiatedGObject[4].name = GameObjectToSpawn[4].name;   //Plant cutout 1
+        InstatiatedGObject[4].SetActive(false);
+
+        InstatiatedGObject.Add(Instantiate(GameObjectToSpawn[5], Vector3.zero, Quaternion.identity));
+        InstatiatedGObject[5].name = GameObjectToSpawn[5].name;   //Plant cutout 1
+        InstatiatedGObject[5].SetActive(false);
+
     }
 
 
@@ -72,12 +80,18 @@ public class ARImgRecognition : MonoBehaviour
                 indexOfImg =0;
                 InstatiatedGObject[0].transform.position = trackedImage.transform.position;
                 InstatiatedGObject[0].transform.localEulerAngles = trackedImage.transform.localEulerAngles;
+
+                InstatiatedGObject[4].transform.position = GameObjectToSpawn[4].transform.position;
+                InstatiatedGObject[4].transform.localEulerAngles = GameObjectToSpawn[4].transform.localEulerAngles;
+                //InstatiatedGObject[4].transform.position += Vector3.right * Time.deltaTime;
+
                 Debug.Log("Spawned game object with name:"+InstatiatedGObject[0].name);
                 if (trackedImage.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking)
                 {
                     timer = 0;
                     Debug.Log("Tracking...");
                     InstatiatedGObject[0].SetActive(true);
+                    InstatiatedGObject[4].SetActive(true);
                 }
 
                 else if (trackedImage.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Limited)
@@ -86,6 +100,7 @@ public class ARImgRecognition : MonoBehaviour
                     Debug.Log("Limited...");
 
                     StartCoroutine(timerMarker(0));
+                    StartCoroutine(timerMarker(4));
                    // newARObj[0].SetActive(false);
 
                 }
@@ -99,12 +114,16 @@ public class ARImgRecognition : MonoBehaviour
                 InstatiatedGObject[1].transform.position = trackedImage.transform.position;
                 InstatiatedGObject[1].transform.localEulerAngles = trackedImage.transform.localEulerAngles;
 
+                InstatiatedGObject[5].transform.localPosition = trackedImage.transform.position;
+                InstatiatedGObject[5].transform.localEulerAngles = trackedImage.transform.localEulerAngles;
+                
                 Debug.Log("Spawned game object with name:"+InstatiatedGObject[0].name);
                 if (trackedImage.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking)
                 {
                     Debug.Log("TrackingIn...");
                     timer = 0;
                     InstatiatedGObject[1].SetActive(true);
+                    InstatiatedGObject[5].SetActive(true);
                 }
 
                 else if (trackedImage.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Limited)
@@ -112,6 +131,7 @@ public class ARImgRecognition : MonoBehaviour
                     Debug.Log("Limited...");
 
                     StartCoroutine(timerMarker(1));
+                    StartCoroutine(timerMarker(5));
                     //newARObj[1].SetActive(false);
                 }
 

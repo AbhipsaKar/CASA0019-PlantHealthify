@@ -381,6 +381,8 @@ MonoBehaviour:
   - {fileID: 3204310608508576585, guid: 42cd9e6dd809d7340832a8844b9635fb, type: 3}
   - {fileID: 3204310608508576585, guid: 42cd9e6dd809d7340832a8844b9635fb, type: 3}
   - {fileID: 3204310608508576585, guid: 42cd9e6dd809d7340832a8844b9635fb, type: 3}
+  - {fileID: 244819368239939302, guid: fd5560b95f69e6042ac7f5d5a6d1b6d0, type: 3}
+  - {fileID: 584868105975751376, guid: fa96efcaf5c2724478367ad815a8c56d, type: 3}
   indexOfImg: 0
 --- !u!114 &388525033
 MonoBehaviour:
