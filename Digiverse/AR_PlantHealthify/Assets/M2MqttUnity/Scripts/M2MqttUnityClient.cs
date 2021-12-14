@@ -87,6 +87,7 @@ namespace M2MqttUnity
         /// </summary>
         public virtual void Connect()
         {
+            Debug.Log("connect");
             if (client == null || !client.IsConnected)
             {
                 StartCoroutine(DoConnect());
@@ -98,6 +99,7 @@ namespace M2MqttUnity
         /// </summary>
         public virtual void Disconnect()
         {
+            Debug.Log("disconnect");
             if (client != null)
             {
                 StartCoroutine(DoDisconnect());
@@ -118,7 +120,7 @@ namespace M2MqttUnity
         protected virtual void OnConnected()
         {
             Debug.LogFormat("Connected to {0}:{1}...\n", brokerAddress, brokerPort.ToString());
-
+            Debug.Log("onconnected");
             SubscribeTopics();
 
             if (ConnectionSucceeded != null)

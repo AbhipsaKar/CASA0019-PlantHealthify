@@ -4,7 +4,6 @@ using UnityEngine;
 using M2MqttUnity;
 using uPLibrary.Networking.M2Mqtt;
 using uPLibrary.Networking.M2Mqtt.Messages;
-using UnityEngine.XR.ARFoundation;
 
 public class mqttReceiver : M2MqttUnityClient
 {
@@ -15,13 +14,8 @@ public class mqttReceiver : M2MqttUnityClient
     public string topicPublish = ""; // topic to publish
     public string messagePublish = ""; // message to publish
 
-    private ARTrackedImageManager _arTrackedImageManager;
-    
-    private ARImgRecognition _arTrackedImageRec;
-
     [Tooltip("Set this to true to perform a testing cycle automatically on startup")]
     public bool autoTest = false;
-
 
     //using C# Property GET/SET and event listener to reduce Update overhead in the controlled objects
     private string m_msg;
@@ -38,7 +32,6 @@ public class mqttReceiver : M2MqttUnityClient
             m_msg = value;
             if (OnMessageArrived != null)
             {
-                Debug.Log("OnMessageArrived");
                 OnMessageArrived(m_msg);
             }
         }
@@ -92,7 +85,6 @@ protected override void OnConnected()
     {
         base.OnConnected();
         isConnected=true;
-        _arTrackedImageManager.trackedImagesChanged += OnGaugeShow;
 
         if (autoTest)
         {
@@ -109,7 +101,6 @@ protected override void OnDisconnected()
     {
         Debug.Log("Disconnected.");
         isConnected=false;
-        _arTrackedImageManager.trackedImagesChanged -= OnGaugeShow;
     }
 
 protected override void OnConnectionLost()
@@ -119,26 +110,8 @@ protected override void OnConnectionLost()
 
 protected override void SubscribeTopics()
     {
-        Debug.Log("subscribe to topic");
-        
-        Debug.Log("Index of spawn"+ _arTrackedImageRec.indexOfImg);
-        //Change the topic to subscribe based on the marker
-        if (_arTrackedImageRec.indexOfImg == 0)
-            {
-                Debug.Log("Show moisture");
-                topicSubscribe = "student/CASA0014/plant/ucfnaka/moisture";
-
-            }
-
-            //string to evaluate is the name of the marker provided in XR Reference Image
-            if (_arTrackedImageRec.indexOfImg == 1)
-            {
-                Debug.Log("Show temp");
-                topicSubscribe = "student/CASA0014/plant/ucfnwho/moisture";
-
-            }
+        Debug.Log("Subscribe");
         client.Subscribe(new string[] { topicSubscribe }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
-
     }
 
 protected override void UnsubscribeTopics()
@@ -149,14 +122,11 @@ protected override void UnsubscribeTopics()
 protected override void Start()
     {
         base.Start();
-        _arTrackedImageManager = FindObjectOfType<ARTrackedImageManager>();
-        _arTrackedImageRec = FindObjectOfType<ARImgRecognition>();
     }
 
 protected override void DecodeMessage(string topic, byte[] message)
     {
         //The message is decoded
-        Debug.Log("Message arrived 1");
         msg = System.Text.Encoding.UTF8.GetString(message);
 
         Debug.Log("Received: " + msg);
@@ -200,29 +170,5 @@ private void OnValidate()
             autoConnect = true;
         }
     }
-
-public void OnGaugeShow(ARTrackedImagesChangedEventArgs args)
-    {
-        Debug.Log("OnGaugeShow");
-        foreach (var trackedImage in args.updated)
-        {
-            //string to evaluate is the name of the marker provided in XR Reference Image
-            if (trackedImage.referenceImage.name == "Marker-01")
-            {
-                Debug.Log("Show moisture");
-                topicSubscribe = "student/CASA0014/plant/ucfnaka/temperature";
-
-            }
-
-            //string to evaluate is the name of the marker provided in XR Reference Image
-            if (trackedImage.referenceImage.name == "Marker-02")
-            {
-                Debug.Log("Show temp");
-                topicSubscribe = "student/CASA0014/plant/ucfnaka/temperature";
-
-            }
-
-
-        }
-    }
 }
+
