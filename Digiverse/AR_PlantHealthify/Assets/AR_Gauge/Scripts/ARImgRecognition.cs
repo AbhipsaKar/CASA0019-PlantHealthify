@@ -86,59 +86,35 @@ public class ARImgRecognition : MonoBehaviour
     {
         foreach (var trackedImage in args.updated)
         {
-            //string to evaluate is the name of the marker provided in XR Reference Image
-            if (trackedImage.referenceImage.name == "Marker-01")
-            {   int index=0;
-                InstatiatedGObject[index].transform.position = trackedImage.transform.position;
-                InstatiatedGObject[index].transform.localEulerAngles = trackedImage.transform.localEulerAngles;
-                InstatiatedGObject[index].transform.GetChild(2).gameObject.GetComponent<MeshRenderer>().material.mainTexture = TwoDCutoutToSpawn[index];
-
-                if (trackedImage.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking)
+            Debug.Log("Num of images"+_arTrackedImageManager.referenceLibrary[0].name);
+            
+            for(int index =0; index < _arTrackedImageManager.referenceLibrary.count; index++)
+            {
+                if (trackedImage.referenceImage.name == _arTrackedImageManager.referenceLibrary[index].name)
                 {
-                    timer = 0;
-                    Debug.Log("Tracking...");
-                    if (!checkTracking)
+                    InstatiatedGObject[index].transform.position = trackedImage.transform.position;
+                    InstatiatedGObject[index].transform.localEulerAngles = trackedImage.transform.localEulerAngles;
+                    InstatiatedGObject[index].transform.GetChild(2).gameObject.GetComponent<MeshRenderer>().material.mainTexture = TwoDCutoutToSpawn[index];
+
+                    if (trackedImage.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking)
                     {
-                        InstatiatedGObject[index].SetActive(true);
+                        timer = 0;
+                        Debug.Log("Tracking...");
+                        if (!checkTracking)
+                        {
+                            InstatiatedGObject[index].SetActive(true);
+                        }
                     }
-                }
 
-                else if (trackedImage.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Limited)
-                {
-                    Debug.Log("Limited...");
-                    StartCoroutine(timerMarker(index));
-                }
-
-            }
-
-           //string to evaluate is the name of the marker provided in XR Reference Image
-            if (trackedImage.referenceImage.name == "Marker-02")
-            {   int index=1;
-                InstatiatedGObject[index].transform.position = trackedImage.transform.position;
-                InstatiatedGObject[index].transform.localEulerAngles = trackedImage.transform.localEulerAngles;
-                InstatiatedGObject[index].transform.GetChild(2).gameObject.GetComponent<MeshRenderer>().material.mainTexture = TwoDCutoutToSpawn[index];
-
-                if (trackedImage.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking)
-                {
-                    timer = 0;
-                    Debug.Log("Tracking...");
-                    if (!checkTracking)
+                    else if (trackedImage.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Limited)
                     {
-                        InstatiatedGObject[index].SetActive(true);
+                        Debug.Log("Limited...");
+                        StartCoroutine(timerMarker(index));
                     }
-                }
 
-                else if (trackedImage.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Limited)
-                {
-                    Debug.Log("Limited...");
-                    StartCoroutine(timerMarker(index));
                 }
-
             }
-
-           
-
-
+        
         }
 
     }

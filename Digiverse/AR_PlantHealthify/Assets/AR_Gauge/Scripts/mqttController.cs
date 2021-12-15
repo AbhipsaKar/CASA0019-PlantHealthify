@@ -29,17 +29,21 @@ public class mqttController : MonoBehaviour
     private void OnMessageArrivedHandler(mqttObj mqttObject)
     {
         Debug.Log("Event Fired. The message, from Object " + nameController + " is = " + mqttObject.msg);
+
+        this.gameObject.transform.Find("Canvas").gameObject.transform.Find("Topic").GetComponent<TextMeshProUGUI>().text = topic;
+        this.gameObject.transform.Find("Canvas").gameObject.transform.Find("Topic").GetComponent<TextMeshProUGUI>().text = topic;
         string tempMoistureTopic = topic.Substring(0,topic.Length-1);
         tempMoistureTopic += "moisture";  //Check for moisture
         Debug.Log("Temp topic ="+tempMoistureTopic);
         Debug.Log("topic ="+mqttObject.topic);
+
         if (mqttObject.topic == tempMoistureTopic)
         {
             if(mqttObject.topic.Contains("moisture"))
             {
                 numValue = float.Parse(mqttObject.msg);
-                if(numValue > 200)
-                    numValue = 200;
+                if(numValue >= 200)
+                    numValue = 199;
                 Debug.Log("1");
 
             }
