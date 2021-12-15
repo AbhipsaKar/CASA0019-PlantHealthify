@@ -693,6 +693,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4286769935509180232}
   - component: {fileID: -5160612506228253916}
+  - component: {fileID: 6003581793074432499}
+  - component: {fileID: 6357260901769209861}
   - component: {fileID: 3037783810482904297}
   m_Layer: 0
   m_Name: ARGauge
@@ -732,6 +734,48 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.1, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6003581793074432499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4286769935509180233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e37bf9d23704849b6d4bb2fae198be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selfSelected: 1
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeselected:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &6357260901769209861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4286769935509180233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c73c1ab94e28d244827af556dca1ed2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Use:
+    Filter: 0
+    IgnoreStartedOverGui: 1
+    RequiredFingerCount: 2
+    RequiredMouseButtons: 0
+    RequiredSelectable: {fileID: 6003581793074432499}
+  _camera: {fileID: 0}
+  relative: 0
+  sensitivity: 10
+  damping: -10
+  remainingScale: {x: 0, y: 0, z: 0}
 --- !u!114 &3037783810482904297
 MonoBehaviour:
   m_ObjectHideFlags: 0
