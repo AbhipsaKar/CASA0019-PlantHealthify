@@ -13,5 +13,7 @@ QR code:
  <ul>
   <li> Digiverse: Details of the digital environment(unity project and resources) </li>
   <li> Physiverse: Details of the physical data device(arduino code and resources) </li>
+  <li> PromotionalLeaflet.pdf: An advert for the product intended for its target users </li>
+  <li> Plant-Healthify.pptx : A presentation of the created device, the challenges faced and future plans </li>
  </ul>
  
