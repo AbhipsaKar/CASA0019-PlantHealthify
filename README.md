@@ -11,7 +11,9 @@ QR code:
  
 ## APK installation kit
  Download our APP from Google Drive:
+ 
  QR code:
+ 
  ![image](./QRCode-plant-healthify.png)
 
 ## Folder structure
